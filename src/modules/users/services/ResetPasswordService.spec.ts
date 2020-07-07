@@ -76,9 +76,12 @@ describe("ResetPasswordService", () => {
     const { token } = await fakeUserTokensRepository.generate(user.id);
 
     // Customize the return of Date.now, with your own implementation
-    jest.spyOn(Date, "now").mockImplementation(() => { });
+    jest.spyOn(Date, "now").mockImplementationOnce(() => {
+      const customDate = new Date();
+      return customDate.setHours(customDate.getHours() + 3);
+    });
 
-    expect(
+    await expect(
       resetPassword.execute({
         password: "123123",
         token,
