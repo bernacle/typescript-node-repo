@@ -40,7 +40,6 @@ class CreateAppointmentService {
         "You can only create appointments between 8am and 5pm",
       );
     }
-
     const findAppointmentInSameDate = await this.appointmentsRepository.findByDate(
       appointmentDate,
     );
