@@ -32,8 +32,6 @@ class ListProviderAppointments {
       year,
     });
 
-    await this.cacheProvider.save("asd", "asd");
-
     return appointments;
   }
 }
