@@ -36,7 +36,7 @@ jobs:
       # Build the app
       - name: Run Build
         run: yarn build
-      # Copy dist folder to Digital Ocean
+      # Copy dist folder to Digital Ocean and replace with the current code
       - name: Copy dist folder to DO
         uses: appleboy/scp-action@master
         with:
@@ -44,11 +44,11 @@ jobs:
          username: ${{ secrets.SSH_USER }}
          key: ${{secrets.SSH_KEY}}
          port: ${{ secrets.SSH_PORT }}
-         source: "."
+         source: "., !node_modules"
          target: "~/app/first-node-repo"
 
-    
-    # Replace the current code on dist folder for the new code
     # Execute yarn in Digital Ocean
+      
     # Execute Migrations
+      
     # Restart Server
